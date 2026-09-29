@@ -1,0 +1,1055 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Database Learning Hub</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f6f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 17px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .portal-btn {
+      text-decoration: none;
+      background: #4f46e5;
+      color: #ffffff;
+      padding: 10px 17px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .portal-btn:hover {
+      background: #4338ca;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      background: #ffffff;
+      text-align: center;
+      padding: 65px 20px 55px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      color: #111827;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #4f46e5;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #6b7280;
+      font-size: 16px;
+    }
+
+    /* ================= CONTAINER ================= */
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 45px auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 28px;
+      color: #111827;
+      margin-bottom: 7px;
+    }
+
+    .section-title p {
+      color: #6b7280;
+      font-size: 15px;
+    }
+
+    /* ================= INFO CARDS ================= */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .info-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    .info-card p {
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    .info-card ul {
+      margin-top: 10px;
+      padding-left: 20px;
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    .info-card li {
+      margin-bottom: 5px;
+    }
+
+    /* ================= STRUCTURE ================= */
+
+    .structure {
+      margin-top: 45px;
+    }
+
+    .structure-box {
+      background: #111827;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 22px;
+      overflow-x: auto;
+    }
+
+    .structure-box pre {
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    /* ================= PRIMARY KEY ================= */
+
+    .primary-key {
+      margin-top: 45px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 25px;
+    }
+
+    .primary-key h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .primary-key p {
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    .key-example {
+      margin-top: 18px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 7px;
+      padding: 15px;
+      overflow-x: auto;
+    }
+
+    .key-example pre {
+      font-family: Consolas, monospace;
+      font-size: 14px;
+    }
+
+    /* ================= COMPARISON ================= */
+
+    .comparison {
+      margin-top: 45px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+    }
+
+    th,
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    td {
+      color: #4b5563;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ================= SQL PROMPTS ================= */
+
+    .prompts {
+      margin-top: 50px;
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .prompt-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 22px;
+    }
+
+    .prompt-card:hover {
+      border-color: #c7d2fe;
+    }
+
+    .number {
+      display: inline-flex;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #eef2ff;
+      color: #4f46e5;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .prompt-card h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    .prompt-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 14px;
+      border-radius: 7px;
+      font-size: 14px;
+      color: #374151;
+      min-height: 95px;
+    }
+
+    .copy-btn {
+      width: 100%;
+      margin-top: 12px;
+      padding: 10px;
+      border: none;
+      border-radius: 7px;
+      background: #111827;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .copy-btn:hover {
+      background: #4f46e5;
+    }
+
+    .copy-btn.copied {
+      background: #15803d;
+    }
+
+    /* ================= PRACTICE ================= */
+
+    .resources {
+      margin-top: 50px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .resources h2 {
+      font-size: 25px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .resources p {
+      color: #6b7280;
+      margin-bottom: 22px;
+      font-size: 15px;
+    }
+
+    .api-btn {
+      display: inline-block;
+      padding: 11px 22px;
+      border-radius: 7px;
+      text-decoration: none;
+      background: #111827;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .api-btn:hover {
+      background: #374151;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      margin-top: 50px;
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 15px 5%;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .portal-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
+      .hero {
+        padding: 50px 20px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .info-grid,
+      .prompt-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: 92%;
+      }
+    }
+
+    @media (max-width: 450px) {
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .section-title h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
+    <div class="logo">
+      Database Learning Hub
+    </div>
+
+    <!-- Student Portal - Only Here -->
+
+    <a
+      href="https://mrecwstudentsportal.netlify.app/"
+      target="_blank"
+      class="portal-btn"
+    >
+      Student Portal
+    </a>
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <h1>
+      Learn <span>Databases</span> with AI
+    </h1>
+
+    <p>
+      Understand database basics, SQL, MongoDB and important queries
+      with simple examples and AI prompts.
+    </p>
+
+  </section>
+
+
+  <main class="container">
+
+
+    <!-- ================= DATABASE BASICS ================= -->
+
+    <section>
+
+      <div class="section-title">
+
+        <h2>1. What is a Database?</h2>
+
+        <p>Understand the basic idea before working with SQL or MongoDB.</p>
+
+      </div>
+
+
+      <div class="info-grid">
+
+        <div class="info-card">
+
+          <h3>Database</h3>
+
+          <p>
+            A database is a place where we store and organize data
+            so that we can easily add, find, update and delete information.
+          </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <h3>Real-Life Example</h3>
+
+          <p>
+            A college may store student information such as name,
+            email, mobile number, course and marks in a database.
+          </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <h3>Common Operations</h3>
+
+          <ul>
+            <li>Create data</li>
+            <li>Read data</li>
+            <li>Update data</li>
+            <li>Delete data</li>
+          </ul>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <h3>Why Use a Database?</h3>
+
+          <ul>
+            <li>Store large amounts of data</li>
+            <li>Search data quickly</li>
+            <li>Update information easily</li>
+            <li>Manage application data</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SQL ================= -->
+
+    <section class="structure">
+
+      <div class="section-title">
+
+        <h2>2. SQL and Its Structure</h2>
+
+        <p>SQL databases store data using tables.</p>
+
+      </div>
+
+
+      <div class="info-grid">
+
+        <div class="info-card">
+
+          <h3>What is SQL?</h3>
+
+          <p>
+            SQL stands for Structured Query Language.
+            It is used to create, read, update and delete data
+            in relational databases.
+          </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <h3>SQL Structure</h3>
+
+          <p>
+            SQL databases organize information into databases,
+            tables, rows and columns.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="structure-box">
+
+<pre>
+Database
+   │
+   ├── Students Table
+   │      │
+   │      ├── id
+   │      ├── name
+   │      ├── email
+   │      ├── mobile
+   │      └── course
+   │
+   └── Courses Table
+          │
+          ├── course_id
+          └── course_name
+</pre>
+
+      </div>
+
+      <p class="note">
+        Table = collection of related data | Row = one record |
+        Column = one type of information
+      </p>
+
+    </section>
+
+
+    <!-- ================= MONGODB ================= -->
+
+    <section class="structure">
+
+      <div class="section-title">
+
+        <h2>3. MongoDB and Its Structure</h2>
+
+        <p>MongoDB is a NoSQL database that stores data as documents.</p>
+
+      </div>
+
+
+      <div class="info-grid">
+
+        <div class="info-card">
+
+          <h3>What is MongoDB?</h3>
+
+          <p>
+            MongoDB is a NoSQL database. Instead of storing data
+            mainly in rows and columns, MongoDB stores data as
+            JSON-like documents.
+          </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <h3>MongoDB Structure</h3>
+
+          <p>
+            MongoDB uses databases, collections and documents.
+            Documents contain fields and values.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="structure-box">
+
+<pre>
+Database
+   │
+   └── students Collection
+          │
+          ├── Document 1
+          │    {
+          │      name: "Rahul",
+          │      email: "rahul@gmail.com",
+          │      course: "JavaScript"
+          │    }
+          │
+          └── Document 2
+               {
+                 name: "Priya",
+                 email: "priya@gmail.com",
+                 course: "React"
+               }
+</pre>
+
+      </div>
+
+      <p class="note">
+        Collection ≈ Table | Document ≈ Row/Record |
+        Field ≈ Column
+      </p>
+
+    </section>
+
+
+    <!-- ================= PRIMARY KEY ================= -->
+
+    <section class="primary-key">
+
+      <h3>4. What is a Primary Key?</h3>
+
+      <p>
+        A primary key is a column used to uniquely identify
+        each record in a SQL table.
+      </p>
+
+      <div class="key-example">
+
+<pre>
+students
+
+id    name       course
+--------------------------------
+1     Rahul      JavaScript
+2     Priya      React
+3     Aman       Python
+
+Here, "id" is the Primary Key.
+Each student has a unique id.
+</pre>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SQL VS MONGODB ================= -->
+
+    <section class="comparison">
+
+      <div class="section-title">
+
+        <h2>5. SQL vs MongoDB</h2>
+
+        <p>Understand the basic difference between relational and NoSQL databases.</p>
+
+      </div>
+
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Feature</th>
+              <th>SQL</th>
+              <th>MongoDB</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>Type</td>
+              <td>Relational Database</td>
+              <td>NoSQL Database</td>
+            </tr>
+
+            <tr>
+              <td>Data Format</td>
+              <td>Tables</td>
+              <td>Documents</td>
+            </tr>
+
+            <tr>
+              <td>Structure</td>
+              <td>Rows and Columns</td>
+              <td>Documents and Fields</td>
+            </tr>
+
+            <tr>
+              <td>Collection Equivalent</td>
+              <td>Table</td>
+              <td>Collection</td>
+            </tr>
+
+            <tr>
+              <td>Record Equivalent</td>
+              <td>Row</td>
+              <td>Document</td>
+            </tr>
+
+            <tr>
+              <td>Query Language</td>
+              <td>SQL</td>
+              <td>MongoDB Query Language</td>
+            </tr>
+
+            <tr>
+              <td>Schema</td>
+              <td>Usually structured/schema-based</td>
+              <td>Flexible document structure</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SQL PROMPTS ================= -->
+
+    <section class="prompts">
+
+      <div class="section-title">
+
+        <h2>6. Important SQL Query Prompts</h2>
+
+        <p>
+          Copy the prompt and paste it into ChatGPT or another AI tool.
+        </p>
+
+      </div>
+
+
+      <div class="prompt-grid">
+
+
+        <!-- CREATE TABLE -->
+
+        <div class="prompt-card">
+
+          <div class="number">1</div>
+
+          <h3>Create Table</h3>
+
+          <div class="prompt-box" id="prompt1">
+            Create a simple SQL query to create a students table with
+            id, name, email, mobile, and course. Make id the primary key.
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyPrompt('prompt1', this)"
+          >
+            Copy Prompt
+          </button>
+
+        </div>
+
+
+        <!-- INSERT -->
+
+        <div class="prompt-card">
+
+          <div class="number">2</div>
+
+          <h3>Insert Data</h3>
+
+          <div class="prompt-box" id="prompt2">
+            Create a SQL query to insert 5 sample student records into
+            the students table.
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyPrompt('prompt2', this)"
+          >
+            Copy Prompt
+          </button>
+
+        </div>
+
+
+        <!-- SELECT -->
+
+        <div class="prompt-card">
+
+          <div class="number">3</div>
+
+          <h3>Select All Data</h3>
+
+          <div class="prompt-box" id="prompt3">
+            Create a SQL query to display all records from the students table.
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyPrompt('prompt3', this)"
+          >
+            Copy Prompt
+          </button>
+
+        </div>
+
+
+        <!-- UPDATE -->
+
+        <div class="prompt-card">
+
+          <div class="number">4</div>
+
+          <h3>UPDATE</h3>
+
+          <div class="prompt-box" id="prompt4">
+            Create a SQL query to update the course of the student whose
+            id is 1 to JavaScript.
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyPrompt('prompt4', this)"
+          >
+            Copy Prompt
+          </button>
+
+        </div>
+
+
+        <!-- DELETE -->
+
+        <div class="prompt-card">
+
+          <div class="number">5</div>
+
+          <h3>DELETE</h3>
+
+          <div class="prompt-box" id="prompt5">
+            Create a SQL query to delete the student whose id is 1.
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyPrompt('prompt5', this)"
+          >
+            Copy Prompt
+          </button>
+
+        </div>
+
+
+        <!-- WHERE -->
+
+        <div class="prompt-card">
+
+          <div class="number">6</div>
+
+          <h3>WHERE Condition</h3>
+
+          <div class="prompt-box" id="prompt6">
+            Create a SQL query to display students whose course is JavaScript.
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyPrompt('prompt6', this)"
+          >
+            Copy Prompt
+          </button>
+
+        </div>
+
+
+        <!-- ORDER BY -->
+
+        <div class="prompt-card">
+
+          <div class="number">7</div>
+
+          <h3>ORDER BY</h3>
+
+          <div class="prompt-box" id="prompt7">
+            Create a SQL query to display all students sorted by name
+            in ascending order.
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyPrompt('prompt7', this)"
+          >
+            Copy Prompt
+          </button>
+
+        </div>
+
+
+        <!-- COUNT -->
+
+        <div class="prompt-card">
+
+          <div class="number">8</div>
+
+          <h3>COUNT</h3>
+
+          <div class="prompt-box" id="prompt8">
+            Create a SQL query to count the total number of students
+            in the students table.
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyPrompt('prompt8', this)"
+          >
+            Copy Prompt
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PRACTICE RESOURCE ================= -->
+
+    <section class="resources">
+
+      <h2>Practice Resource</h2>
+
+      <p>
+        Create your own Student API and use it for CRUD practice.
+      </p>
+
+      <a
+        href="https://mockapi.io/"
+        target="_blank"
+        class="api-btn"
+      >
+        Build Your Own API
+      </a>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+    Database Learning Hub | Practice and Learn
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    function copyPrompt(id, button) {
+
+      const prompt = document.querySelector("#" + id).innerText;
+
+      navigator.clipboard.writeText(prompt)
+        .then(function () {
+
+          button.innerText = "Copied";
+
+          button.classList.add("copied");
+
+          setTimeout(function () {
+
+            button.innerText = "Copy Prompt";
+
+            button.classList.remove("copied");
+
+          }, 1500);
+
+        })
+        .catch(function () {
+
+          alert("Unable to copy the prompt.");
+
+        });
+
+    }
+
+  </script>
+
+</body>
+</html>
