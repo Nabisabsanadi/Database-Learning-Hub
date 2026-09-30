@@ -1,413 +1,648 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Database Learning Hub</title>
+  <title>AI Assisted Web Dev Class</title>
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #f6f7fb;
-      color: #1f2937;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
       line-height: 1.6;
     }
 
     /* ================= HEADER ================= */
 
     header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 17px 8%;
+      background: linear-gradient(135deg, #111827, #2563eb);
+      color: white;
+      padding: 18px 7%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
 
     .logo {
-      font-size: 21px;
-      font-weight: 700;
-      color: #111827;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo i {
+      margin-right: 8px;
     }
 
     .portal-btn {
       text-decoration: none;
-      background: #4f46e5;
-      color: #ffffff;
-      padding: 10px 17px;
-      border-radius: 7px;
-      font-size: 14px;
-      font-weight: 600;
+      color: white;
+      background: rgba(255,255,255,0.15);
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: 0.3s;
     }
 
     .portal-btn:hover {
-      background: #4338ca;
+      background: white;
+      color: #2563eb;
     }
 
     /* ================= HERO ================= */
 
     .hero {
-      background: #ffffff;
+      min-height: 430px;
+      padding: 80px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 65px 20px 55px;
+      background:
+        radial-gradient(circle at top left, #dbeafe, transparent 35%),
+        radial-gradient(circle at bottom right, #e0e7ff, transparent 35%),
+        #ffffff;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2563eb;
+      color: white;
+      border-radius: 20px;
+      font-size: 35px;
+      box-shadow: 0 10px 30px rgba(37,99,235,0.25);
     }
 
     .hero h1 {
-      font-size: 40px;
-      color: #111827;
+      font-size: 48px;
       margin-bottom: 15px;
-    }
-
-    .hero h1 span {
-      color: #4f46e5;
+      color: #111827;
     }
 
     .hero p {
+      font-size: 19px;
+      color: #555;
       max-width: 700px;
       margin: auto;
-      color: #6b7280;
-      font-size: 16px;
     }
 
-    /* ================= CONTAINER ================= */
+    /* ================= COMMON ================= */
 
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: 45px auto;
+    section {
+      padding: 70px 7%;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .section-title h2 {
-      font-size: 28px;
+      font-size: 34px;
       color: #111827;
-      margin-bottom: 7px;
+      margin-bottom: 10px;
     }
 
     .section-title p {
-      color: #6b7280;
-      font-size: 15px;
+      color: #666;
     }
 
-    /* ================= INFO CARDS ================= */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
 
-    .info-grid {
+    /* ================= CARDS ================= */
+
+    .cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
     }
 
-    .info-card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 24px;
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
     }
 
-    .info-card h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .card-icon {
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eff6ff;
+      color: #2563eb;
+      border-radius: 12px;
+      font-size: 25px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
       color: #111827;
     }
 
-    .info-card p {
-      color: #4b5563;
-      font-size: 15px;
+    .card p {
+      color: #666;
+      margin-bottom: 15px;
     }
 
-    .info-card ul {
-      margin-top: 10px;
-      padding-left: 20px;
-      color: #4b5563;
-      font-size: 15px;
+    /* ================= RESOURCE LINKS ================= */
+
+    .resource-link {
+      display: inline-block;
+      text-decoration: none;
+      background: #2563eb;
+      color: white;
+      padding: 10px 17px;
+      border-radius: 8px;
+      transition: 0.3s;
     }
 
-    .info-card li {
-      margin-bottom: 5px;
+    .resource-link:hover {
+      background: #1d4ed8;
     }
 
-    /* ================= STRUCTURE ================= */
-
-    .structure {
-      margin-top: 45px;
+    .resource-link i {
+      margin-right: 7px;
     }
 
-    .structure-box {
+    /* ================= GETTING STARTED ================= */
+
+    .getting-started {
       background: #111827;
-      color: #ffffff;
+      color: white;
+    }
+
+    .getting-started .section-title h2 {
+      color: white;
+    }
+
+    .getting-started .section-title p {
+      color: #cbd5e1;
+    }
+
+    .setup-box {
+      max-width: 1100px;
+      margin: auto;
+      background: #1f2937;
+      padding: 35px;
+      border-radius: 18px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .step {
+      background: #374151;
+      padding: 25px;
+      border-radius: 14px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: #d1d5db;
+    }
+
+    .code-box {
+      background: #111827;
+      padding: 20px;
+      margin-top: 25px;
       border-radius: 10px;
-      padding: 22px;
       overflow-x: auto;
     }
 
-    .structure-box pre {
+    .code-box pre {
+      color: #d1d5db;
       font-family: Consolas, monospace;
-      font-size: 14px;
-      line-height: 1.8;
     }
 
-    .note {
-      margin-top: 12px;
-      color: #6b7280;
-      font-size: 14px;
+    /* ================= DATABASE ================= */
+
+    .database-section {
+      background: #ffffff;
+    }
+
+    .database-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .database-card {
+      background: #f8fafc;
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .database-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .database-card ul {
+      padding-left: 20px;
+      color: #555;
     }
 
     /* ================= PRIMARY KEY ================= */
 
     .primary-key {
-      margin-top: 45px;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 25px;
-    }
-
-    .primary-key h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
-    }
-
-    .primary-key p {
-      color: #4b5563;
-      font-size: 15px;
-    }
-
-    .key-example {
-      margin-top: 18px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 7px;
-      padding: 15px;
-      overflow-x: auto;
-    }
-
-    .key-example pre {
-      font-family: Consolas, monospace;
-      font-size: 14px;
+      max-width: 1000px;
+      margin: 30px auto 0;
+      background: #eff6ff;
+      padding: 30px;
+      border-radius: 15px;
+      border-left: 5px solid #2563eb;
     }
 
     /* ================= COMPARISON ================= */
 
-    .comparison {
-      margin-top: 45px;
-    }
-
-    .table-wrapper {
+    .table-container {
+      max-width: 1100px;
+      margin: auto;
       overflow-x: auto;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 650px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
     }
 
     th,
     td {
-      padding: 14px;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 15px;
       text-align: left;
-      font-size: 14px;
+      border-bottom: 1px solid #e5e7eb;
     }
 
     th {
-      background: #f3f4f6;
-      color: #111827;
+      background: #2563eb;
+      color: white;
     }
 
     td {
-      color: #4b5563;
-    }
-
-    tr:last-child td {
-      border-bottom: none;
+      color: #555;
     }
 
     /* ================= SQL PROMPTS ================= */
 
-    .prompts {
-      margin-top: 50px;
-    }
-
     .prompt-grid {
+      max-width: 1100px;
+      margin: auto;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
     .prompt-card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
+      background: white;
       padding: 22px;
-    }
-
-    .prompt-card:hover {
-      border-color: #c7d2fe;
-    }
-
-    .number {
-      display: inline-flex;
-      width: 32px;
-      height: 32px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: #eef2ff;
-      color: #4f46e5;
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 12px;
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+      border-left: 4px solid #2563eb;
     }
 
     .prompt-card h3 {
-      font-size: 18px;
       margin-bottom: 12px;
-      color: #111827;
     }
 
-    .prompt-box {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      padding: 14px;
-      border-radius: 7px;
-      font-size: 14px;
-      color: #374151;
-      min-height: 95px;
+    .prompt-text {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      color: #333;
     }
 
     .copy-btn {
-      width: 100%;
-      margin-top: 12px;
-      padding: 10px;
       border: none;
-      border-radius: 7px;
       background: #111827;
-      color: #ffffff;
+      color: white;
+      padding: 9px 15px;
+      border-radius: 7px;
       cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
+      transition: 0.3s;
     }
 
     .copy-btn:hover {
-      background: #4f46e5;
+      background: #2563eb;
+    }
+
+    .copy-btn i {
+      margin-right: 6px;
     }
 
     .copy-btn.copied {
-      background: #15803d;
+      background: #16a34a;
+    }
+
+    /* ================= IMPORTANT PROMPTS ================= */
+
+    .important-prompts {
+      background: #f8fafc;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 20px;
+    }
+
+    .project-icon {
+      width: 60px;
+      height: 60px;
+      background: #eff6ff;
+      color: #2563eb;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-prompt {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
     }
 
     /* ================= PRACTICE ================= */
 
-    .resources {
-      margin-top: 50px;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 35px 25px;
+    .practice-card {
+      max-width: 900px;
+      margin: auto;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
       text-align: center;
     }
 
-    .resources h2 {
-      font-size: 25px;
-      color: #111827;
-      margin-bottom: 8px;
+    .practice-card i {
+      font-size: 45px;
+      margin-bottom: 15px;
     }
 
-    .resources p {
-      color: #6b7280;
-      margin-bottom: 22px;
-      font-size: 15px;
+    .practice-card h2 {
+      margin-bottom: 10px;
     }
 
-    .api-btn {
+    .practice-card p {
+      margin-bottom: 20px;
+    }
+
+    .practice-card a {
       display: inline-block;
-      padding: 11px 22px;
-      border-radius: 7px;
+      background: white;
+      color: #2563eb;
+      padding: 12px 22px;
       text-decoration: none;
-      background: #111827;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 600;
+      border-radius: 8px;
+      font-weight: bold;
     }
 
-    .api-btn:hover {
-      background: #374151;
+    /* ================= NETLIFY ================= */
+
+    .netlify-section {
+      background: #ffffff;
+    }
+
+    .netlify-intro {
+      max-width: 850px;
+      margin: 0 auto 35px;
+      text-align: center;
+      color: #555;
+    }
+
+    .netlify-steps {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .netlify-step {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 25px;
+      position: relative;
+    }
+
+    .netlify-step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .netlify-step h3 {
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .netlify-step p {
+      color: #666;
+    }
+
+    .netlify-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 11px 18px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .netlify-button:hover {
+      background: #1d4ed8;
+    }
+
+    .deploy-flow {
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding: 25px;
+      background: #eff6ff;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: bold;
+      color: #1e3a8a;
+    }
+
+    /* ================= SETUP ================= */
+
+    .setup-section {
+      background: #f8fafc;
+    }
+
+    /* ================= HELP ================= */
+
+    .help-card {
+      max-width: 850px;
+      margin: 70px auto;
+      background: #111827;
+      color: white;
+      padding: 45px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .help-card i {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .help-card p {
+      color: #d1d5db;
+      margin: 10px 0 20px;
+    }
+
+    .help-card a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     /* ================= FOOTER ================= */
 
     footer {
-      margin-top: 50px;
-      background: #111827;
-      color: #9ca3af;
+      background: #0f172a;
+      color: #cbd5e1;
       text-align: center;
-      padding: 20px;
-      font-size: 13px;
+      padding: 25px;
     }
 
     /* ================= RESPONSIVE ================= */
 
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
+      .cards,
+      .steps,
+      .database-grid,
+      .netlify-steps {
+        grid-template-columns: 1fr;
+      }
 
+      .hero h1 {
+        font-size: 38px;
+      }
+    }
+
+    @media (max-width: 600px) {
       header {
         padding: 15px 5%;
       }
 
       .logo {
-        font-size: 18px;
+        font-size: 17px;
       }
 
       .portal-btn {
-        font-size: 12px;
         padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      section {
+        padding: 50px 5%;
       }
 
       .hero {
-        padding: 50px 20px;
+        padding: 60px 5%;
       }
 
       .hero h1 {
-        font-size: 30px;
-      }
-
-      .info-grid,
-      .prompt-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .container {
-        width: 92%;
-      }
-    }
-
-    @media (max-width: 450px) {
-
-      .hero h1 {
-        font-size: 26px;
+        font-size: 32px;
       }
 
       .hero p {
-        font-size: 14px;
+        font-size: 16px;
       }
 
       .section-title h2 {
-        font-size: 24px;
+        font-size: 28px;
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -418,602 +653,1142 @@
   <!-- ================= HEADER ================= -->
 
   <header>
-
     <div class="logo">
-      Database Learning Hub
+      <i class="fa-solid fa-code"></i>
+      AI Assisted Web Dev Class
     </div>
-
-    <!-- Student Portal - Only Here -->
-
-    <a
-      href="https://mrecwstudentsportal.netlify.app/"
-      target="_blank"
-      class="portal-btn"
-    >
-      Student Portal
-    </a>
-
   </header>
 
 
   <!-- ================= HERO ================= -->
 
   <section class="hero">
+    <div class="hero-content">
 
-    <h1>
-      Learn <span>Databases</span> with AI
-    </h1>
+      <div class="hero-icon">
+        <i class="fa-solid fa-laptop-code"></i>
+      </div>
 
-    <p>
-      Understand database basics, SQL, MongoDB and important queries
-      with simple examples and AI prompts.
-    </p>
+      <h1>AI Assisted Web Development</h1>
+
+      <p>
+        Learn HTML, CSS, JavaScript, Databases, APIs and modern
+        web development with the help of AI tools.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ================= LEARNING RESOURCES ================= -->
+
+  <section>
+    <div class="section-title">
+      <h2>Web Development Learning Resources</h2>
+      <p>Useful resources for learning web development.</p>
+    </div>
+
+    <div class="cards container">
+
+      <div class="card">
+        <div class="card-icon">
+          <i class="fa-brands fa-html5"></i>
+        </div>
+
+        <h3>HTML</h3>
+
+        <p>
+          Learn HTML tags, semantic elements, forms,
+          tables and page structure.
+        </p>
+
+        <a
+          class="resource-link"
+          href="https://www.w3schools.com/html/"
+          target="_blank"
+        >
+          <i class="fa-solid fa-book-open"></i>
+          Learn HTML
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-icon">
+          <i class="fa-brands fa-css3-alt"></i>
+        </div>
+
+        <h3>CSS</h3>
+
+        <p>
+          Learn colors, spacing, Flexbox, Grid,
+          responsive design and media queries.
+        </p>
+
+        <a
+          class="resource-link"
+          href="https://www.w3schools.com/css/"
+          target="_blank"
+        >
+          <i class="fa-solid fa-book-open"></i>
+          Learn CSS
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="card-icon">
+          <i class="fa-brands fa-js"></i>
+        </div>
+
+        <h3>JavaScript</h3>
+
+        <p>
+          Learn variables, functions, DOM, events,
+          Fetch API and CRUD operations.
+        </p>
+
+        <a
+          class="resource-link"
+          href="https://www.w3schools.com/js/"
+          target="_blank"
+        >
+          <i class="fa-solid fa-book-open"></i>
+          Learn JavaScript
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= GETTING STARTED ================= -->
+
+  <section class="getting-started">
+
+    <div class="section-title">
+      <h2>Getting Started with Web Development</h2>
+      <p>
+        Follow these simple steps to create your first web project.
+      </p>
+    </div>
+
+    <div class="setup-box">
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">1</div>
+
+          <h3>
+            <i class="fa-solid fa-folder-plus"></i>
+            Create Project Folder
+          </h3>
+
+          <p>
+            Create a folder for your website project.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">2</div>
+
+          <h3>
+            <i class="fa-solid fa-file-code"></i>
+            Create Files
+          </h3>
+
+          <p>
+            Create index.html, style.css and script.js.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">3</div>
+
+          <h3>
+            <i class="fa-solid fa-play"></i>
+            Run with Live Server
+          </h3>
+
+          <p>
+            Install Live Server in VS Code and open your
+            website in the browser.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="code-box">
+
+<pre>
+my-website/
+│
+├── index.html
+├── style.css
+└── script.js
+</pre>
+
+      </div>
+
+    </div>
 
   </section>
 
 
-  <main class="container">
+  <!-- ================= DATABASE ================= -->
 
+  <section class="database-section">
 
-    <!-- ================= DATABASE BASICS ================= -->
+    <div class="section-title">
 
-    <section>
-
-      <div class="section-title">
-
-        <h2>1. What is a Database?</h2>
-
-        <p>Understand the basic idea before working with SQL or MongoDB.</p>
-
-      </div>
-
-
-      <div class="info-grid">
-
-        <div class="info-card">
-
-          <h3>Database</h3>
-
-          <p>
-            A database is a place where we store and organize data
-            so that we can easily add, find, update and delete information.
-          </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <h3>Real-Life Example</h3>
-
-          <p>
-            A college may store student information such as name,
-            email, mobile number, course and marks in a database.
-          </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <h3>Common Operations</h3>
-
-          <ul>
-            <li>Create data</li>
-            <li>Read data</li>
-            <li>Update data</li>
-            <li>Delete data</li>
-          </ul>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <h3>Why Use a Database?</h3>
-
-          <ul>
-            <li>Store large amounts of data</li>
-            <li>Search data quickly</li>
-            <li>Update information easily</li>
-            <li>Manage application data</li>
-          </ul>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= SQL ================= -->
-
-    <section class="structure">
-
-      <div class="section-title">
-
-        <h2>2. SQL and Its Structure</h2>
-
-        <p>SQL databases store data using tables.</p>
-
-      </div>
-
-
-      <div class="info-grid">
-
-        <div class="info-card">
-
-          <h3>What is SQL?</h3>
-
-          <p>
-            SQL stands for Structured Query Language.
-            It is used to create, read, update and delete data
-            in relational databases.
-          </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <h3>SQL Structure</h3>
-
-          <p>
-            SQL databases organize information into databases,
-            tables, rows and columns.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="structure-box">
-
-<pre>
-Database
-   │
-   ├── Students Table
-   │      │
-   │      ├── id
-   │      ├── name
-   │      ├── email
-   │      ├── mobile
-   │      └── course
-   │
-   └── Courses Table
-          │
-          ├── course_id
-          └── course_name
-</pre>
-
-      </div>
-
-      <p class="note">
-        Table = collection of related data | Row = one record |
-        Column = one type of information
-      </p>
-
-    </section>
-
-
-    <!-- ================= MONGODB ================= -->
-
-    <section class="structure">
-
-      <div class="section-title">
-
-        <h2>3. MongoDB and Its Structure</h2>
-
-        <p>MongoDB is a NoSQL database that stores data as documents.</p>
-
-      </div>
-
-
-      <div class="info-grid">
-
-        <div class="info-card">
-
-          <h3>What is MongoDB?</h3>
-
-          <p>
-            MongoDB is a NoSQL database. Instead of storing data
-            mainly in rows and columns, MongoDB stores data as
-            JSON-like documents.
-          </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <h3>MongoDB Structure</h3>
-
-          <p>
-            MongoDB uses databases, collections and documents.
-            Documents contain fields and values.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="structure-box">
-
-<pre>
-Database
-   │
-   └── students Collection
-          │
-          ├── Document 1
-          │    {
-          │      name: "Rahul",
-          │      email: "rahul@gmail.com",
-          │      course: "JavaScript"
-          │    }
-          │
-          └── Document 2
-               {
-                 name: "Priya",
-                 email: "priya@gmail.com",
-                 course: "React"
-               }
-</pre>
-
-      </div>
-
-      <p class="note">
-        Collection ≈ Table | Document ≈ Row/Record |
-        Field ≈ Column
-      </p>
-
-    </section>
-
-
-    <!-- ================= PRIMARY KEY ================= -->
-
-    <section class="primary-key">
-
-      <h3>4. What is a Primary Key?</h3>
+      <h2>Database Basics</h2>
 
       <p>
-        A primary key is a column used to uniquely identify
-        each record in a SQL table.
+        Understand how databases store and organize data.
       </p>
 
-      <div class="key-example">
-
-<pre>
-students
-
-id    name       course
---------------------------------
-1     Rahul      JavaScript
-2     Priya      React
-3     Aman       Python
-
-Here, "id" is the Primary Key.
-Each student has a unique id.
-</pre>
-
-      </div>
-
-    </section>
+    </div>
 
 
-    <!-- ================= SQL VS MONGODB ================= -->
+    <div class="database-grid">
 
-    <section class="comparison">
+      <div class="database-card">
 
-      <div class="section-title">
-
-        <h2>5. SQL vs MongoDB</h2>
-
-        <p>Understand the basic difference between relational and NoSQL databases.</p>
-
-      </div>
-
-
-      <div class="table-wrapper">
-
-        <table>
-
-          <thead>
-
-            <tr>
-              <th>Feature</th>
-              <th>SQL</th>
-              <th>MongoDB</th>
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            <tr>
-              <td>Type</td>
-              <td>Relational Database</td>
-              <td>NoSQL Database</td>
-            </tr>
-
-            <tr>
-              <td>Data Format</td>
-              <td>Tables</td>
-              <td>Documents</td>
-            </tr>
-
-            <tr>
-              <td>Structure</td>
-              <td>Rows and Columns</td>
-              <td>Documents and Fields</td>
-            </tr>
-
-            <tr>
-              <td>Collection Equivalent</td>
-              <td>Table</td>
-              <td>Collection</td>
-            </tr>
-
-            <tr>
-              <td>Record Equivalent</td>
-              <td>Row</td>
-              <td>Document</td>
-            </tr>
-
-            <tr>
-              <td>Query Language</td>
-              <td>SQL</td>
-              <td>MongoDB Query Language</td>
-            </tr>
-
-            <tr>
-              <td>Schema</td>
-              <td>Usually structured/schema-based</td>
-              <td>Flexible document structure</td>
-            </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= SQL PROMPTS ================= -->
-
-    <section class="prompts">
-
-      <div class="section-title">
-
-        <h2>6. Important SQL Query Prompts</h2>
+        <h3>
+          <i class="fa-solid fa-database"></i>
+          What is a Database?
+        </h3>
 
         <p>
-          Copy the prompt and paste it into ChatGPT or another AI tool.
+          A database is a structured place where we store,
+          manage and retrieve data.
+        </p>
+
+        <ul>
+          <li>Stores application data</li>
+          <li>Organizes information</li>
+          <li>Allows searching and filtering</li>
+          <li>Supports CRUD operations</li>
+        </ul>
+
+      </div>
+
+
+      <div class="database-card">
+
+        <h3>
+          <i class="fa-solid fa-table"></i>
+          SQL Structure
+        </h3>
+
+        <p>
+          SQL databases organize data using tables.
+        </p>
+
+        <ul>
+          <li>Database</li>
+          <li>Table</li>
+          <li>Rows</li>
+          <li>Columns</li>
+          <li>Primary Key</li>
+        </ul>
+
+      </div>
+
+
+      <div class="database-card">
+
+        <h3>
+          <i class="fa-solid fa-leaf"></i>
+          MongoDB Structure
+        </h3>
+
+        <p>
+          MongoDB is a NoSQL database that stores
+          data in document-based collections.
+        </p>
+
+        <ul>
+          <li>Database</li>
+          <li>Collection</li>
+          <li>Document</li>
+          <li>Fields</li>
+        </ul>
+
+      </div>
+
+
+      <div class="database-card">
+
+        <h3>
+          <i class="fa-solid fa-key"></i>
+          Primary Key
+        </h3>
+
+        <p>
+          A primary key uniquely identifies each record
+          in a SQL table.
+        </p>
+
+        <ul>
+          <li>Must be unique</li>
+          <li>Cannot be NULL</li>
+          <li>Identifies each row</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="primary-key">
+
+      <h3>
+        <i class="fa-solid fa-circle-info"></i>
+        Example
+      </h3>
+
+      <p>
+        In a students table, the <strong>id</strong> column
+        can be used as the primary key because every student
+        has a unique ID.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SQL VS MONGODB ================= -->
+
+  <section>
+
+    <div class="section-title">
+
+      <h2>SQL vs MongoDB</h2>
+
+      <p>
+        Understand the basic difference between SQL and MongoDB.
+      </p>
+
+    </div>
+
+
+    <div class="table-container">
+
+      <table>
+
+        <tr>
+          <th>SQL</th>
+          <th>MongoDB</th>
+        </tr>
+
+        <tr>
+          <td>Relational database</td>
+          <td>NoSQL database</td>
+        </tr>
+
+        <tr>
+          <td>Uses tables</td>
+          <td>Uses collections</td>
+        </tr>
+
+        <tr>
+          <td>Uses rows</td>
+          <td>Uses documents</td>
+        </tr>
+
+        <tr>
+          <td>Uses columns</td>
+          <td>Uses fields</td>
+        </tr>
+
+        <tr>
+          <td>Fixed schema</td>
+          <td>Flexible schema</td>
+        </tr>
+
+        <tr>
+          <td>Uses SQL queries</td>
+          <td>Uses MongoDB queries</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SQL QUERIES ================= -->
+
+  <section class="database-section">
+
+    <div class="section-title">
+
+      <h2>Important SQL Query Prompts</h2>
+
+      <p>
+        Copy these prompts and use them with AI tools.
+      </p>
+
+    </div>
+
+
+    <div class="prompt-grid">
+
+
+      <!-- CREATE -->
+
+      <div class="prompt-card">
+
+        <h3>
+          <i class="fa-solid fa-table"></i>
+          1. Create Table
+        </h3>
+
+        <div class="prompt-text" id="prompt1">
+          Create a simple SQL query to create a students table
+          with id, name, email, mobile, and course.
+          Make id the primary key.
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('prompt1', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+
+      <!-- INSERT -->
+
+      <div class="prompt-card">
+
+        <h3>
+          <i class="fa-solid fa-plus"></i>
+          2. Insert Data
+        </h3>
+
+        <div class="prompt-text" id="prompt2">
+          Create a SQL query to insert 5 sample student
+          records into the students table.
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('prompt2', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+
+      <!-- SELECT -->
+
+      <div class="prompt-card">
+
+        <h3>
+          <i class="fa-solid fa-list"></i>
+          3. Select All Data
+        </h3>
+
+        <div class="prompt-text" id="prompt3">
+          Create a SQL query to display all records
+          from the students table.
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('prompt3', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+
+      <!-- UPDATE -->
+
+      <div class="prompt-card">
+
+        <h3>
+          <i class="fa-solid fa-pen-to-square"></i>
+          4. UPDATE
+        </h3>
+
+        <div class="prompt-text" id="prompt4">
+          Create a SQL UPDATE query to change the email
+          of a student using the student's id.
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('prompt4', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+
+      <!-- DELETE -->
+
+      <div class="prompt-card">
+
+        <h3>
+          <i class="fa-solid fa-trash"></i>
+          5. DELETE
+        </h3>
+
+        <div class="prompt-text" id="prompt5">
+          Create a SQL DELETE query to delete a student
+          record using the student's id.
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('prompt5', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+
+      <!-- WHERE -->
+
+      <div class="prompt-card">
+
+        <h3>
+          <i class="fa-solid fa-filter"></i>
+          6. WHERE
+        </h3>
+
+        <div class="prompt-text" id="prompt6">
+          Create a SQL query to display students
+          where the course is "MERN".
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('prompt6', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+
+      <!-- ORDER -->
+
+      <div class="prompt-card">
+
+        <h3>
+          <i class="fa-solid fa-arrow-down-wide-short"></i>
+          7. ORDER BY
+        </h3>
+
+        <div class="prompt-text" id="prompt7">
+          Create a SQL query to display all students
+          sorted by name in ascending order.
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('prompt7', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+
+      <!-- COUNT -->
+
+      <div class="prompt-card">
+
+        <h3>
+          <i class="fa-solid fa-calculator"></i>
+          8. COUNT
+        </h3>
+
+        <div class="prompt-text" id="prompt8">
+          Create a SQL query to count the total number
+          of students in the students table.
+        </div>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('prompt8', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+<!-- ================= IMPORTANT DEVELOPMENT PROMPTS ================= -->
+
+<section class="important-prompts">
+
+  <div class="section-title">
+    <h2>Important Development Prompts</h2>
+    <p>Use these AI prompts to build practical projects.</p>
+  </div>
+
+  <div class="container">
+
+    <!-- CAFE -->
+
+    <div class="project-card">
+
+      <div class="project-icon">
+        <i class="fa-solid fa-mug-hot"></i>
+      </div>
+
+      <div>
+
+        <h3>Café Landing Page</h3>
+
+        <p>
+          Create an attractive responsive café landing page
+          using HTML and CSS.
+        </p>
+
+        <div class="project-prompt" id="projectPrompt1">
+          Create a modern and attractive responsive Café Landing
+          Page using HTML and CSS. Include a navbar, hero section,
+          café menu, popular items, about section, customer reviews,
+          contact section and footer. Use attractive cards, proper
+          spacing, responsive design and a modern color combination.
+          Keep the code beginner friendly.
+        </div>
+
+        <br>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('projectPrompt1', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- STUDENT PORTFOLIO -->
+
+    <div class="project-card">
+
+      <div class="project-icon">
+        <i class="fa-solid fa-user-graduate"></i>
+      </div>
+
+      <div>
+
+        <h3>Student Portfolio Gallery</h3>
+
+        <p>
+          Create a portfolio gallery for a student.
+        </p>
+
+        <div class="project-prompt" id="projectPrompt2">
+          Create a modern responsive Student Portfolio Gallery
+          using HTML and CSS. Add the student name, profile section,
+          skills, project cards, education, contact information and
+          footer. Display 6 project cards in a responsive grid.
+          Use attractive hover effects, clean typography and
+          beginner-friendly code.
+        </div>
+
+        <br>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('projectPrompt2', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- QUICKKART -->
+
+    <div class="project-card">
+
+      <div class="project-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+
+      <div>
+
+        <h3>QuickKart Grocery E-Commerce</h3>
+
+        <p>
+          Create a grocery shopping website inspired by
+          modern quick-commerce websites.
+        </p>
+
+        <div class="project-prompt" id="projectPrompt3">
+          Create an attractive responsive grocery e-commerce
+          website called QuickKart using HTML, CSS and JavaScript.
+          Make it inspired by modern quick-commerce websites such
+          as Blinkit, but do not copy their exact design.
+
+          Add a navbar, search bar, grocery categories, product
+          cards, product images, prices, add-to-cart buttons,
+          offers section, responsive layout and footer.
+
+          In the hero section display the developer name
+          "NABISAB SANADI" in large text.
+
+          Use modern UI, attractive cards, hover effects,
+          responsive design and beginner-friendly code.
+        </div>
+
+        <br>
+
+        <button
+          class="copy-btn"
+          onclick="copyPrompt('projectPrompt3', this)"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy Prompt
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+  <!-- ================= MOCK API ================= -->
+
+  <section class="setup-section">
+
+    <div class="section-title">
+
+      <h2>How to Use MockAPI</h2>
+
+      <p>
+        Practice API creation and CRUD operations without
+        setting up a real backend.
+      </p>
+
+    </div>
+
+
+    <div class="setup-box">
+
+      <div class="steps">
+
+
+        <div class="step">
+
+          <div class="step-number">1</div>
+
+          <h3>
+            <i class="fa-solid fa-plus-circle"></i>
+            Create an API
+          </h3>
+
+          <p>
+            Open MockAPI, create a project and add a resource
+            such as users or students.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">2</div>
+
+          <h3>
+            <i class="fa-solid fa-list-check"></i>
+            Add Your Fields
+          </h3>
+
+          <p>
+            Create fields such as name, email, mobile and course,
+            then add sample records.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">3</div>
+
+          <h3>
+            <i class="fa-solid fa-plug"></i>
+            Connect with Fetch
+          </h3>
+
+          <p>
+            Copy the API endpoint and use JavaScript Fetch API
+            for GET, POST, PUT and DELETE operations.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div style="text-align:center;margin-top:24px;">
+
+        <a
+          class="resource-link"
+          href="https://drive.google.com/file/d/10YQ8-NTB9lizSmooZpriQ0WCaWZHf1al/view"
+          target="_blank"
+        >
+          <i class="fa-solid fa-circle-play"></i>
+          Watch MockAPI Connection Video
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= MONGODB ================= -->
+
+  <section class="setup-section">
+
+    <div class="section-title">
+
+      <h2>How to Install & Connect MongoDB</h2>
+
+      <p>
+        Simple steps for beginners to install MongoDB
+        and connect it with a local application.
+      </p>
+
+    </div>
+
+
+    <div class="setup-box">
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">
+            <i class="fa-solid fa-play"></i>
+          </div>
+
+          <h3>MongoDB Installation</h3>
+
+          <p>
+            Watch the video to understand how to install
+            MongoDB on your computer.
+          </p>
+
+          <br>
+
+          <a
+            class="resource-link"
+            href="https://youtu.be/owlrkV_lnks?si=tD3ODJiPuH4ql3qg"
+            target="_blank"
+          >
+            <i class="fa-solid fa-video"></i>
+            Watch Installation Video
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= NETLIFY DEPLOYMENT ================= -->
+
+  <section class="netlify-section">
+
+    <div class="section-title">
+
+      <h2>
+        <i class="fa-solid fa-rocket"></i>
+        How to Deploy Your Project on Netlify
+      </h2>
+
+      <p>
+        Learn how to publish your HTML, CSS and JavaScript
+        project online for free.
+      </p>
+
+    </div>
+
+
+    <p class="netlify-intro">
+
+      If your project is working correctly in VS Code using
+      Live Server, you can deploy the same project on Netlify
+      and get a live website link.
+
+    </p>
+
+
+    <div class="netlify-steps">
+
+
+      <!-- STEP 1 -->
+
+      <div class="netlify-step">
+
+        <div class="netlify-step-number">1</div>
+
+        <h3>
+          <i class="fa-solid fa-globe"></i>
+          Open Netlify
+        </h3>
+
+        <p>
+          Open the Netlify website in your browser.
+        </p>
+
+        <a
+          href="https://www.netlify.com/"
+          target="_blank"
+          class="netlify-button"
+        >
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          Open Netlify
+        </a>
+
+      </div>
+
+
+      <!-- STEP 2 -->
+
+      <div class="netlify-step">
+
+        <div class="netlify-step-number">2</div>
+
+        <h3>
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Login / Sign Up
+        </h3>
+
+        <p>
+          Create a Netlify account or log in using
+          your existing account.
         </p>
 
       </div>
 
 
-      <div class="prompt-grid">
+      <!-- STEP 3 -->
 
+      <div class="netlify-step">
 
-        <!-- CREATE TABLE -->
+        <div class="netlify-step-number">3</div>
 
-        <div class="prompt-card">
+        <h3>
+          <i class="fa-solid fa-folder-open"></i>
+          Prepare Your Project
+        </h3>
 
-          <div class="number">1</div>
+        <p>
+          Make sure your project contains the required files.
+        </p>
 
-          <h3>Create Table</h3>
+        <div class="code-box">
 
-          <div class="prompt-box" id="prompt1">
-            Create a simple SQL query to create a students table with
-            id, name, email, mobile, and course. Make id the primary key.
-          </div>
-
-          <button
-            class="copy-btn"
-            onclick="copyPrompt('prompt1', this)"
-          >
-            Copy Prompt
-          </button>
-
-        </div>
-
-
-        <!-- INSERT -->
-
-        <div class="prompt-card">
-
-          <div class="number">2</div>
-
-          <h3>Insert Data</h3>
-
-          <div class="prompt-box" id="prompt2">
-            Create a SQL query to insert 5 sample student records into
-            the students table.
-          </div>
-
-          <button
-            class="copy-btn"
-            onclick="copyPrompt('prompt2', this)"
-          >
-            Copy Prompt
-          </button>
+<pre>
+my-website/
+│
+├── index.html
+├── style.css
+└── script.js
+</pre>
 
         </div>
-
-
-        <!-- SELECT -->
-
-        <div class="prompt-card">
-
-          <div class="number">3</div>
-
-          <h3>Select All Data</h3>
-
-          <div class="prompt-box" id="prompt3">
-            Create a SQL query to display all records from the students table.
-          </div>
-
-          <button
-            class="copy-btn"
-            onclick="copyPrompt('prompt3', this)"
-          >
-            Copy Prompt
-          </button>
-
-        </div>
-
-
-        <!-- UPDATE -->
-
-        <div class="prompt-card">
-
-          <div class="number">4</div>
-
-          <h3>UPDATE</h3>
-
-          <div class="prompt-box" id="prompt4">
-            Create a SQL query to update the course of the student whose
-            id is 1 to JavaScript.
-          </div>
-
-          <button
-            class="copy-btn"
-            onclick="copyPrompt('prompt4', this)"
-          >
-            Copy Prompt
-          </button>
-
-        </div>
-
-
-        <!-- DELETE -->
-
-        <div class="prompt-card">
-
-          <div class="number">5</div>
-
-          <h3>DELETE</h3>
-
-          <div class="prompt-box" id="prompt5">
-            Create a SQL query to delete the student whose id is 1.
-          </div>
-
-          <button
-            class="copy-btn"
-            onclick="copyPrompt('prompt5', this)"
-          >
-            Copy Prompt
-          </button>
-
-        </div>
-
-
-        <!-- WHERE -->
-
-        <div class="prompt-card">
-
-          <div class="number">6</div>
-
-          <h3>WHERE Condition</h3>
-
-          <div class="prompt-box" id="prompt6">
-            Create a SQL query to display students whose course is JavaScript.
-          </div>
-
-          <button
-            class="copy-btn"
-            onclick="copyPrompt('prompt6', this)"
-          >
-            Copy Prompt
-          </button>
-
-        </div>
-
-
-        <!-- ORDER BY -->
-
-        <div class="prompt-card">
-
-          <div class="number">7</div>
-
-          <h3>ORDER BY</h3>
-
-          <div class="prompt-box" id="prompt7">
-            Create a SQL query to display all students sorted by name
-            in ascending order.
-          </div>
-
-          <button
-            class="copy-btn"
-            onclick="copyPrompt('prompt7', this)"
-          >
-            Copy Prompt
-          </button>
-
-        </div>
-
-
-        <!-- COUNT -->
-
-        <div class="prompt-card">
-
-          <div class="number">8</div>
-
-          <h3>COUNT</h3>
-
-          <div class="prompt-box" id="prompt8">
-            Create a SQL query to count the total number of students
-            in the students table.
-          </div>
-
-          <button
-            class="copy-btn"
-            onclick="copyPrompt('prompt8', this)"
-          >
-            Copy Prompt
-          </button>
-
-        </div>
-
 
       </div>
 
-    </section>
+
+      <!-- STEP 4 -->
+
+      <div class="netlify-step">
+
+        <div class="netlify-step-number">4</div>
+
+        <h3>
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          Deploy Your Project
+        </h3>
+
+        <p>
+          From the Netlify dashboard, choose the option
+          for manually deploying your project and upload
+          your website files/folder.
+        </p>
+
+      </div>
 
 
-    <!-- ================= PRACTICE RESOURCE ================= -->
+      <!-- STEP 5 -->
 
-    <section class="resources">
+      <div class="netlify-step">
 
-      <h2>Practice Resource</h2>
+        <div class="netlify-step-number">5</div>
+
+        <h3>
+          <i class="fa-solid fa-spinner"></i>
+          Wait for Deployment
+        </h3>
+
+        <p>
+          Netlify will upload your files and publish your
+          website. Wait until the deployment is completed.
+        </p>
+
+      </div>
+
+
+      <!-- STEP 6 -->
+
+      <div class="netlify-step">
+
+        <div class="netlify-step-number">6</div>
+
+        <h3>
+          <i class="fa-solid fa-link"></i>
+          Get Your Live Website
+        </h3>
+
+        <p>
+          After deployment, Netlify provides a live website
+          URL. Open the link and share it with others.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="deploy-flow">
+
+      <i class="fa-solid fa-folder-plus"></i>
+      Create Project
+      &nbsp; →
+      <i class="fa-solid fa-play"></i>
+      Test with Live Server
+      &nbsp; →
+      <i class="fa-solid fa-cloud-arrow-up"></i>
+      Deploy on Netlify
+      &nbsp; →
+      <i class="fa-solid fa-link"></i>
+      Get Live Link
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= PRACTICE ================= -->
+
+  <section>
+
+    <div class="practice-card">
+
+      <i class="fa-solid fa-server"></i>
+
+      <h2>Practice Your Own API</h2>
 
       <p>
-        Create your own Student API and use it for CRUD practice.
+        Create your own API and practice GET, POST,
+        PUT and DELETE operations using MockAPI.
       </p>
 
       <a
         href="https://mockapi.io/"
         target="_blank"
-        class="api-btn"
       >
+        <i class="fa-solid fa-code"></i>
         Build Your Own API
       </a>
 
-    </section>
+    </div>
+
+  </section>
 
 
-  </main>
+  <!-- ================= HELP ================= -->
+
+  <section>
+
+    <div class="help-card">
+
+      <i class="fa-solid fa-circle-question"></i>
+
+      <h2>Need Help?</h2>
+
+      <p>
+        If you are facing any problem while learning
+        or practicing, feel free to contact me.
+      </p>
+
+      <a href="mailto:sanadinabi4@gmail.com">
+        sanadinabi4@gmail.com
+
+      </a>
+
+    </div>
+
+  </section>
 
 
   <!-- ================= FOOTER ================= -->
 
   <footer>
-    Database Learning Hub | Practice and Learn
+
+    <i class="fa-solid fa-code"></i>
+
+    AI Assisted Web Dev Class
+    | Practice and Learn
+
   </footer>
 
 
@@ -1023,24 +1798,29 @@ Each student has a unique id.
 
     function copyPrompt(id, button) {
 
-      const prompt = document.querySelector("#" + id).innerText;
+      const prompt =
+        document.getElementById(id).innerText;
 
       navigator.clipboard.writeText(prompt)
+
         .then(function () {
 
-          button.innerText = "Copied";
+          button.innerHTML =
+            '<i class="fa-solid fa-check"></i> Copied';
 
           button.classList.add("copied");
 
           setTimeout(function () {
 
-            button.innerText = "Copy Prompt";
+            button.innerHTML =
+              '<i class="fa-regular fa-copy"></i> Copy Prompt';
 
             button.classList.remove("copied");
 
           }, 1500);
 
         })
+
         .catch(function () {
 
           alert("Unable to copy the prompt.");
